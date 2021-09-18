@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { Header, Button } from 'semantic-ui-react';
+import { colors } from '../utils/helpers';
 
 export class PollTeaser extends Component {
   static propTypes = {
     question: PropTypes.object.isRequired,
-    unanswered: PropTypes.bool.isRequired,
-    color: PropTypes.string
+    unanswered: PropTypes.bool.isRequired
   };
   state = {
     viewPoll: false
@@ -18,7 +18,9 @@ export class PollTeaser extends Component {
     }));
   };
   render() {
-    const { question, unanswered, color } = this.props;
+    const { question, unanswered } = this.props;
+    const buttonColor = unanswered === true ? colors.green : colors.blue;
+    const buttonContent = unanswered === true ? 'Answer Poll' : 'Results'
 
     if (this.state.viewPoll === true) {
       return <Redirect push to={`/questions/${question.id}`} />;
@@ -34,11 +36,11 @@ export class PollTeaser extends Component {
           or...
         </p>
         <Button
-          color={color}
+          color={buttonColor.name}
           size="tiny"
           fluid
           onClick={this.handleClick}
-          content={unanswered === true ? 'Answer Poll' : 'Results'}
+          content={buttonContent}
         />
       </Fragment>
     );
