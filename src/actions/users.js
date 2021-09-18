@@ -1,8 +1,9 @@
-export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const ADD_QUESTION_TO_USER = 'ADD_QUESTION_TO_USER';
 
-export function receiveUsers(users) {
+export function addQuestionToUser({ id, author }) {
   return {
-    type: RECEIVE_USERS,
-    usersdata: users
+    type: ADD_QUESTION_TO_USER,
+    id,
+    author
   };
 }
