@@ -75,7 +75,7 @@ class LoginForm extends Component {
       setTimeout(() => res(), 500);
     }).then(() => setAuthUser(authUser));
   };
-  generateDropdownData = () => {
+  LoginDropdown = () => {
     const { users } = this.props;
 
     return users.map(user => ({
@@ -99,7 +99,7 @@ class LoginForm extends Component {
           fluid
           selection
           scrolling
-          options={this.generateDropdownData()}
+          options={this.LoginDropdown()}
           value={value}
           onChange={this.onChange}
           required
@@ -110,12 +110,12 @@ class LoginForm extends Component {
   }
 }
 
-const ConnectedLoginForm = connect(mapStateToProps,  { setAuthUser })(LoginForm);
-
 function mapStateToProps({ users }) {
   return {
     users: Object.values(users)
   };
 }
+
+const ConnectedLoginForm = connect(mapStateToProps,  { setAuthUser })(LoginForm);
 
 export default Login;
