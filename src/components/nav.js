@@ -30,19 +30,19 @@ class Nav extends Component {
           name='home'
           active={activeItem === 'home'}
           as={NavLink} to="/" exact
-          onClick={this.handleItemClick}
+          // onClick={this.handleItemClick}
         />
         <Menu.Item
           name='new poll'
           active={activeItem === 'new poll'}
           as={NavLink} to="/add" exact
-          onClick={this.handleItemClick}
+          // onClick={this.handleItemClick}
         />
         <Menu.Item
           name='leader board'
           active={activeItem === 'leader board'}
           as={NavLink} to="/leaderboard" exact
-          onClick={this.handleItemClick}
+          // onClick={this.handleItemClick}
         />
         <Menu.Menu position='right'>
           <div>

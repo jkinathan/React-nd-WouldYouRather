@@ -75,6 +75,7 @@ class LoginForm extends Component {
       setTimeout(() => res(), 500);
     }).then(() => setAuthUser(authUser));
   };
+  
   LoginDropdown = () => {
     const { users } = this.props;
 
