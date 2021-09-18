@@ -17,6 +17,6 @@ import {
             questions: state[author].questions.concat(id)
           }
         };
-      \
+      
     }
   }

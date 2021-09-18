@@ -1,5 +1,5 @@
-import { _saveQuestionAnswer } from './_DATA';
-
-export function saveQuestionAnswer(authUser, qid, answer) {
-  return _saveQuestionAnswer({ authUser, qid, answer });
-}
+import {    _saveQuestion,  } from './_DATA';
+  
+  export function saveQuestion(question) {
+    return _saveQuestion(question);
+  }
