@@ -1,50 +1,55 @@
 
-import './App.css';
-import React, {Component,Fragment} from 'react';
-import { handleInitialData } from './actions/shared';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react';
+import { handleInitialData } from '../actions/shared';
 import { connect } from 'react-redux';
-import { Grid } from 'semantic-ui-react'
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Home from './components/home';
-// import Nav from './components/nav';
-import Login from './components/login';
-
+import Login from './components/Login';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import UserCard from './components/UserCard';
+import NewPoll from './components/NewPoll';
+import Leaderboard from './components/Leaderboard';
+import NoMatch from './components/NoMatch';
 
 class App extends Component {
-
   componentDidMount() {
     this.props.handleInitialData();
   }
-
-
   render() {
-    const { authedUser } = this.props
+    const { authUser } = this.props;
     return (
       <Router>
         <div className="App">
-          {authedUser === null ? (
-              <Route
-                render={() => (
-                  <ContentGrid>
-                    <Login />
-                  </ContentGrid>
-                )}
-              />
-            ) : (
-              <Fragment>
-                {/* <Nav /> */}
+          {authUser === null ? (
+            <Route
+              render={() => (
                 <ContentGrid>
-                  <Route exact path="/" component={Home} />
+                  <Login />
                 </ContentGrid>
-              </Fragment>
-            )}
-          
+              )}
+            />
+          ) : (
+            <Fragment>
+              <Nav />
+              <ContentGrid>
+                <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/questions/bad_id" component={NoMatch} />
+                  <Route path="/questions/:question_id" component={UserCard} />
+                  <Route path="/add" component={NewPoll} />
+                  <Route path="/leaderboard" component={Leaderboard} />
+                  <Route component={NoMatch} />
+                </Switch>
+              </ContentGrid>
+            </Fragment>
+          )}
         </div>
       </Router>
     );
   }
-  
 }
+
 const ContentGrid = ({ children }) => (
   <Grid padded="vertically" columns={1} centered>
     <Grid.Row>
@@ -53,10 +58,13 @@ const ContentGrid = ({ children }) => (
   </Grid>
 );
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authUser }) {
   return {
-    authedUser
+    authUser
   };
 }
 
-export default connect(mapStateToProps, { handleInitialData })(App);
+export default connect(
+  mapStateToProps,
+  { handleInitialData }
+)(App);
