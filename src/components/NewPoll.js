@@ -2,29 +2,23 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {
-  Segment,
-  Header,
-  Grid,
-  Divider,
-  Form,
-  Dimmer,
-  Loader
-} from 'semantic-ui-react';
+import { Segment, Header, Grid, Divider, Form, Dimmer, Loader } from 'semantic-ui-react';
 import { handleSaveQuestion } from '../actions/questions';
 
 export class NewPoll extends Component {
+
   static propTypes = {
     authUser: PropTypes.string.isRequired,
     handleSaveQuestion: PropTypes.func.isRequired
   };
+
   state = {
-    validSubmit: false,
+    CorrectSubmit: false,
     isLoading: false,
     option1: '',
     option2: ''
   };
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
   };
   handleSubmit = e => {
@@ -41,20 +35,20 @@ export class NewPoll extends Component {
         option1: '',
         option2: ''
       });
-      this.setState({ validSubmit: true });
+      this.setState({ CorrectSubmit: true });
     });
   };
   render() {
     console.log('this.props', this.props);
     const disabled = this.state.option1 === '' || this.state.option2 === '';
 
-    if (this.state.validSubmit === true) {
+    if (this.state.CorrectSubmit === true) {
       return <Redirect to="/" />;
     }
     return (
       <Segment.Group>
         <Header as="h3" textAlign="left" block attached="top">
-          Create a New Poll
+          <strong>Create New Question</strong>
         </Header>
         <Grid padded>
           <Grid.Column>
@@ -65,12 +59,12 @@ export class NewPoll extends Component {
             )}
             <p>Complete the question:</p>
             <p>
-              <strong>Would you rather...</strong>
+              <strong>Would you rather ...</strong>
             </p>
             <Form onSubmit={this.handleSubmit}>
               <Form.Input
                 id="option1"
-                placeholder="Enter option one..."
+                placeholder="Enter Option One Text Here"
                 value={this.state.option1}
                 onChange={this.handleChange}
                 required
@@ -78,7 +72,7 @@ export class NewPoll extends Component {
               <Divider horizontal>Or</Divider>
               <Form.Input
                 id="option2"
-                placeholder="Enter option two..."
+                placeholder="Enter Option Two Text Here"
                 value={this.state.option2}
                 onChange={this.handleChange}
                 required
@@ -100,7 +94,4 @@ function mapStateToProps({ authUser }) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  { handleSaveQuestion }
-)(NewPoll);
+export default connect( mapStateToProps,{ handleSaveQuestion } )(NewPoll);

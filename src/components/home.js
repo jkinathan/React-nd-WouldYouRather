@@ -1,49 +1,36 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
-
 import UserCard from './UserCard';
-// import PollTeaser from './PollTeaser';
 
 export class Home extends Component {
-  static propTypes = {
-    userQuestionData: PropTypes.object.isRequired
-  };
-  render() {
-    const { userQuestionData } = this.props;
 
-    return <Tab panes={panes({ userQuestionData })} className="tab" />;
+  render() {
+    const { QuestionDetails } = this.props;
+
+    return <Tab panes={panes({ QuestionDetails })} className="tab" />;
   }
 }
 
 const panes = props => {
-  const { userQuestionData } = props;
+  const { QuestionDetails } = props;
   return [
     {
-      menuItem: 'Unanswered',
+      menuItem: 'Unanswered Questions',
       render: () => (
         <Tab.Pane>
-          {userQuestionData.answered.map(question => (
-            <UserCard
-              key={question.id}
-              question_id={question.id}
-              unanswered={true}
-            />
+          {QuestionDetails.unanswered.map(question => (
+            <UserCard key={question.id} question_id={question.id} unanswered={true} />
           ))}
         </Tab.Pane>
       )
     },
     {
-      menuItem: 'Answered',
+      menuItem: 'Answered Questions',
       render: () => (
         <Tab.Pane>
-          {userQuestionData.unanswered.map(question => (
-            <UserCard
-              key={question.id}
-              question_id={question.id}
-              unanswered={false}
-            />
+          {QuestionDetails.answered.map(question => (
+            <UserCard key={question.id} question_id={question.id} unanswered={false} />
           ))}
         </Tab.Pane>
       )
@@ -52,6 +39,7 @@ const panes = props => {
 };
 
 function mapStateToProps({ authUser, users, questions }) {
+
   const answeredIds = Object.keys(users[authUser].answers);
   const answered = Object.values(questions)
     .filter(question => answeredIds.includes(question.id))
@@ -61,7 +49,7 @@ function mapStateToProps({ authUser, users, questions }) {
     .sort((a, b) => b.timestamp - a.timestamp);
 
   return {
-    userQuestionData: {
+    QuestionDetails: {
       answered,
       unanswered
     }

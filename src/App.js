@@ -2,15 +2,15 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
-import { handleInitialData } from '../actions/shared';
+import { handleInitialData } from './actions/shared';
 import { connect } from 'react-redux';
-import Login from './components/Login';
-import Nav from './components/Nav';
-import Home from './components/Home';
+import Login from './components/login';
+import Nav from './components/nav';
+import Home from './components/home';
 import UserCard from './components/UserCard';
 import NewPoll from './components/NewPoll';
 import Leaderboard from './components/Leaderboard';
-import NoMatch from './components/NoMatch';
+import Page404 from './components/404';
 
 class App extends Component {
   componentDidMount() {
@@ -35,11 +35,11 @@ class App extends Component {
               <ContentGrid>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/questions/bad_id" component={NoMatch} />
+                  <Route path="/questions/page404id" component={Page404} />
                   <Route path="/questions/:question_id" component={UserCard} />
                   <Route path="/add" component={NewPoll} />
                   <Route path="/leaderboard" component={Leaderboard} />
-                  <Route component={NoMatch} />
+                  <Route component={Page404} />
                 </Switch>
               </ContentGrid>
             </Fragment>
@@ -64,7 +64,4 @@ function mapStateToProps({ authUser }) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  { handleInitialData }
-)(App);
+export default connect(mapStateToProps,{ handleInitialData })(App);

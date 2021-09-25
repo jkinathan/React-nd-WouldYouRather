@@ -2,10 +2,10 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: 'https://gravatar.com/avatar/bc8914e9ab0dd8500cbb898bba43b16f?s=400&d=robohash&r=x',
+    avatarURL: 'https://robohash.org/cd53a81cb3f93470409cbc26a5550225?set=set4&bgset=&size=400x400',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
+      "6ni6ok3ym7mf1p33lnez": 'optionOne',
       "am8ehyc8byjqgar0jgpub9": 'optionTwo',
       "loxhs1bqm25b708cmbf3g": 'optionTwo'
     },
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://robohash.org/bc8914e9ab0dd8500cbb898bba43b16f?set=set4&bgset=&size=400x400',
+    avatarURL: 'https://gravatar.com/avatar/cd53a81cb3f93470409cbc26a5550225?s=400&d=robohash&r=x',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,11 +24,11 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://avatars.dicebear.com/v2/female/bc8914e9ab0dd8500cbb898bba43b16f.svg',
+    avatarURL: 'https://gravatar.com/avatar/0c7b56d4403cad3b9d9fed966bfca90f?s=400&d=robohash&r=x',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo'
+      "6ni6ok3ym7mf1p33lnez": 'optionOne'
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
   }
@@ -58,7 +58,7 @@ let questions = {
     },
     optionTwo: {
       votes: ['johndoe', 'sarahedo'],
-      text: 'become a supervillain'
+      text: 'become a supervillian'
     }
   },
   "am8ehyc8byjqgar0jgpub9": {
@@ -150,7 +150,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question);
+    const formattedQuestion = formatQuestion(question)
 
     setTimeout(() => {
       questions = {
