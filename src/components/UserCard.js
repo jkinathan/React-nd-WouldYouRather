@@ -88,9 +88,6 @@ function mapStateToProps(
 
     if(question === undefined)
     {
-      console.log("--------------Helloo------------")
-      console.log("My question is ",question)
-      console.log("And my user is: ",user)
       page404id = true;
     }
     else
