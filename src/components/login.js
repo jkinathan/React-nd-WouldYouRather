@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Segment,  Grid,  Header,  Image,  Form} from 'semantic-ui-react';
 import { setAuthUser } from '../actions/authUser';
 
-export class Login extends Component {
+class Login extends Component {
+  
   state = {
     value: ''
   };

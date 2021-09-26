@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Header, Button, Form, Radio } from 'semantic-ui-react';
 import { handleSaveQuestionAnswer } from '../actions/users';
 
-export class PollQuestion extends Component {
+class PollQuestion extends Component {
 
   state = {
     value: ''
@@ -51,7 +51,7 @@ export class PollQuestion extends Component {
 function mapStateToProps({ authUser }) {
 
   return {
-    authUser
+    authUser:authUser
   };
 }
 

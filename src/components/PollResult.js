@@ -9,7 +9,7 @@ const VoteTag = () => (
   </Label.Group>
 );
 
-export class PollResult extends Component {
+class PollResult extends Component {
 
   render() {
     const { question, user } = this.props;
@@ -51,7 +51,7 @@ export class PollResult extends Component {
 function mapStateToProps({ users, authUser }) {
   const user = users[authUser];
   return {
-    user
+    user:user
   };
 }
 

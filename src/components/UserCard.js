@@ -2,28 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
 import { Segment, Header, Grid, Image } from 'semantic-ui-react';
+
 import PollQuestion from './PollQuestion';
 import PollResult from './PollResult';
-import PollTeaser from './PollTeaser';
+import PollSample from './PollSample';
 
-const pollTypes = {
-  POLL_TEASER: 'POLL_TEASER',
-  POLL_QUESTION: 'POLL_QUESTION',
-  POLL_RESULT: 'POLL_RESULT'
-};
 
 const PollData = (props) => {
   const { pollType, question, unanswered } = props;
 
   switch (pollType) {
 
-    case pollTypes.POLL_TEASER:
-      return <PollTeaser question={question} unanswered={unanswered} />;
+    case 'POLL_SAMPLE':
+      return <PollSample question={question} unanswered={unanswered} />;
 
-    case pollTypes.POLL_QUESTION:
+    case 'POLL_QUESTION':
       return <PollQuestion question={question} />;
 
-    case pollTypes.POLL_RESULT:
+    case 'POLL_RESULT':
       return <PollResult question={question} />;
 
     default:
@@ -31,7 +27,7 @@ const PollData = (props) => {
   }
 };
 
-export class UserCard extends Component {
+class UserCard extends Component {
   
   render() {
     const { author, question, pollType, unanswered = null, page404 } = this.props;
@@ -42,9 +38,7 @@ export class UserCard extends Component {
     return (
       <Segment.Group>
         <Header as="h5" textAlign="left" block attached="top" >
-        {
-        unanswered === true ? author.name +" asks :" : "Asked by: "+author.name
-  }
+        {unanswered === true ? author.name +" asks :" : "Asked by: "+author.name}
         </Header>
 
         <Grid divided padded>
@@ -75,23 +69,27 @@ function mapStateToProps(
   {
     question = questions[question_id];
     author = users[question.author];
-    pollType = pollTypes.POLL_TEASER;
+    pollType = 'POLL_SAMPLE';
   } 
   else 
   {
     const { question_id } = match.params;
+
     question = questions[question_id];
+
     const user = users[authUser];
 
-    if(question === undefined){
+    if(question === undefined)
+    {
       page404id = true;
     }
-    else{
+    else
+    {
       author = users[question.author];
-      pollType = pollTypes.POLL_QUESTION;
+      pollType = 'POLL_QUESTION';
 
       if(Object.keys(user.answers).includes(question.id)){
-        pollType = pollTypes.POLL_RESULT;
+        pollType = 'POLL_RESULT';
       }
     }
   }

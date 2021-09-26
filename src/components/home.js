@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
 import UserCard from './UserCard';
 
-export class Home extends Component {
+class Home extends Component {
 
   render() {
     const { QuestionDetails } = this.props;

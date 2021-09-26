@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { Segment, Header, Grid, Divider, Form, Dimmer, Loader } from 'semantic-ui-react';
 import { handleSaveQuestion } from '../actions/questions';
 
-export class NewPoll extends Component {
+class NewPoll extends Component {
 
   static propTypes = {
     authUser: PropTypes.string.isRequired,

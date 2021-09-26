@@ -5,10 +5,12 @@ import { Segment, Grid, Header, Image, Label, Divider } from 'semantic-ui-react'
 
 const trophyColor = ['yellow', 'grey', 'orange'];
 
-export class Leaderboard extends Component {
+class Leaderboard extends Component {
+
   static propType = {
     leaderboardData: PropType.array.isRequired
   };
+
   render() {
     const { leaderboardData } = this.props;
 
@@ -27,13 +29,13 @@ export class Leaderboard extends Component {
                     {user.name}
                   </Header>
                   <Grid>
-                    <Grid.Column width={12}>Answered questions</Grid.Column>
-                    <Grid.Column width={4}>{user.answerCount}</Grid.Column>
+                    <Grid.Column width={12}><strong>Answered questions</strong></Grid.Column>
+                    <Grid.Column width={4}><strong>{user.answerCount}</strong></Grid.Column>
                   </Grid>
                   <Divider />
                   <Grid>
-                    <Grid.Column width={12}>Created questions</Grid.Column>
-                    <Grid.Column width={4}>{user.questionCount}</Grid.Column>
+                    <Grid.Column width={12}><strong>Created questions</strong></Grid.Column>
+                    <Grid.Column width={4}><strong>{user.questionCount}</strong></Grid.Column>
                   </Grid>
                 </Grid.Column>
                 <Grid.Column width={4} textAlign="center">
@@ -41,7 +43,7 @@ export class Leaderboard extends Component {
                     <Header as="h5" block attached="top" content="Score" />
                     <Segment>
                       <Label circular color="blue" size="big">
-                        {user.questionCount + user.answerCount}
+                      <strong>{user.questionCount + user.answerCount}</strong>
                       </Label>
                     </Segment>
                   </Segment.Group>
@@ -56,6 +58,7 @@ export class Leaderboard extends Component {
 }
 
 function mapStateToProps({ users }) {
+
   const leaderboardData = Object.values(users)
     .map(user => ({
       id: user.id,
@@ -63,13 +66,10 @@ function mapStateToProps({ users }) {
       avatarURL: user.avatarURL,
       answerCount: Object.values(user.answers).length,
       questionCount: user.questions.length,
-      total: Object.values(user.answers).length + user.questions.length
-    }))
-    .sort((a, b) => a.total - b.total)
-    .reverse()
-    .slice(0, 3);
+      total: Object.values(user.answers).length + user.questions.length})).sort((a, b) => a.total - b.total).reverse().slice(0, 3);
+
   return {
-    leaderboardData
+    leaderboardData:leaderboardData
   };
 }
 
