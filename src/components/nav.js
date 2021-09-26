@@ -18,8 +18,10 @@ class Nav extends Component {
           <Grid padded="vertically" columns={1}>
             <Grid.Row>
               <Grid.Column>
-                <Image src={users[authUser].avatarURL} avatar verticalAlign="bottom"/>
-                {users[authUser].name}
+                <strong style={{marginLeft: 900}}>
+                  <Image src={users[authUser].avatarURL} avatar verticalAlign="bottom"/>
+                  {users[authUser].name}
+                </strong>
                 <Button
                   content="Logout"
                   labelPosition="right"
@@ -37,11 +39,7 @@ class Nav extends Component {
                 <Menu pointing secondary widths={3}>
                   <Menu.Item name="home" as={NavLink} to="/" exact />
                   <Menu.Item name="new poll" as={NavLink} to="/add" />
-                  <Menu.Item
-                    name="leader board"
-                    as={NavLink}
-                    to="/leaderboard"
-                  />
+                  <Menu.Item name="leader board" as={NavLink} to="/leaderboard"/>
                 </Menu>
               </Grid.Column>
             </Grid.Row>
