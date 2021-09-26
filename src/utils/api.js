@@ -18,6 +18,7 @@ export function saveQuestion(question) {
   return Promise.all([_saveQuestion(question)]).then(([question]) => question);
 }
 
-export function saveQuestionAnswer(info) {
-  return _saveQuestionAnswer(info);
+export function saveQuestionAnswer(authUser, qid, answer) {
+  console.log("Here is the data am sending through",{authUser, qid, answer});
+  return _saveQuestionAnswer({authUser, qid, answer});
 }
