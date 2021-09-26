@@ -5,7 +5,7 @@ import { Segment,  Grid,  Header,  Image,  Form} from 'semantic-ui-react';
 import { setAuthUser } from '../actions/authUser';
 
 class Login extends Component {
-  
+
   state = {
     value: ''
   };
@@ -54,7 +54,7 @@ class Login extends Component {
                 <Grid.Row className="login">
                   <Grid.Column width={16}>
                     
-                    <Image src="/reactor.png" size="medium" centered />
+                    <Image src="/images/reactor.png" size="medium" centered />
                     <br />
                     
                     <Form onSubmit={this.handleSubmit}>
