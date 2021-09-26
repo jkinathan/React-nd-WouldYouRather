@@ -41,20 +41,20 @@ Data stored in the Redux Store:
 
 ### Login
 
-![1](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/login1.png)
+![1](https://github.com/jkinathan/React-nd-WouldYouRather/blob/cd8442b454d2c9e384d520c13892edbcabead9d9/public/images/login1.png)
 
 ### Dashboard
 
-![2](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/Dashboard.png)
+![2](https://github.com/jkinathan/React-nd-WouldYouRather/blob/cd8442b454d2c9e384d520c13892edbcabead9d9/public/images/Dashboard.png)
 
 ### Leaderboard
 
-![3](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/Leaderboard.png)
+![3](https://github.com/jkinathan/React-nd-WouldYouRather/blob/cd8442b454d2c9e384d520c13892edbcabead9d9/public/images/Leaderboard.png)
 
 ### Question Poll
 
-![4](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/NewPoll.png)
+![4](https://github.com/jkinathan/React-nd-WouldYouRather/blob/cd8442b454d2c9e384d520c13892edbcabead9d9/public/images/NewPoll.png)
 
 ### Poll Results
 
-![5](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/Results.png)
+![5](https://github.com/jkinathan/React-nd-WouldYouRather/blob/cd8442b454d2c9e384d520c13892edbcabead9d9/public/images/Results.png)
