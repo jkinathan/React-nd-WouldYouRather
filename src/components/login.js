@@ -1,18 +1,14 @@
 
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Segment,  Grid,  Header,  Image,  Form,  Loader,  Dimmer} from 'semantic-ui-react';
+import { Segment,  Grid,  Header,  Image,  Form} from 'semantic-ui-react';
 import { setAuthUser } from '../actions/authUser';
 
 export class Login extends Component {
   state = {
-    loading: false,
     value: ''
   };
 
-  handleLoading = () => {
-    this.setState({ loading: true });
-  };
 
   onChange = (e, { value }) => {
     this.setState({ value });
@@ -24,7 +20,6 @@ export class Login extends Component {
     const authedUser = this.state.value;
 
     new Promise((res, rej) => {
-      
       setTimeout(() => res(), 500);
     }).then(() => setAuthUser(authedUser));
   };
@@ -57,12 +52,8 @@ export class Login extends Component {
               <Grid padded textAlign="center">
                 <Grid.Row className="login">
                   <Grid.Column width={16}>
-                    {this.state.loading === true && (
-                      <Dimmer active inverted>
-                        <Loader inverted content="Loading" />
-                      </Dimmer>
-                    )}
-                    <Image src="reactor.png" size="medium" centered />
+                    
+                    <Image src="/reactor.png" size="medium" centered />
                     <br />
                     
                     <Form onSubmit={this.handleSubmit}>
