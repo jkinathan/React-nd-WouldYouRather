@@ -19,6 +19,6 @@ export function saveQuestion(question) {
 }
 
 export function saveQuestionAnswer(authUser, qid, answer) {
-  console.log("Here is the data am sending through",{authUser, qid, answer});
+
   return _saveQuestionAnswer({authUser, qid, answer});
 }
