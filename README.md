@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# Reactnd Would You Rather Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the code for the final assessment project for Udacity's React & Redux course.
 
-## Available Scripts
 
-In the project directory, you can run:
+A web application built with react-redux that lets a user play the “Would You Rather?” game. 
 
-### `npm start`
+The user is asked a question in form: “Would you rather do [option A] or [option B] ?”. He / She
+must select an option.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In this app, users are able to ask and answer questions, see which questions they have/haven’t answered, see how other people have voted, and see the ranking of users on the leaderboard.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Once the user is logged in, the user is able to toggle between his/her answered and unanswered polls on the home page. The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom).
 
-### `npm test`
+Upon voting in a poll, all of the information of an answered poll is displayed. The user’s response is recorded and clearly visible on the poll details page. Users can only vote once per poll; they are not allowed to change their answer after they have voted. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+When the user comes back to the home page, the polling question appears in the “Answered” section.
+## Installation Guide
 
-### `npm run build`
+To set-up project:
+- Clone the repository from : [https://github.com/jkinathan/React-nd-WouldYouRather]
+- install all project dependencies with `npm install`
+- start the development server with `npm start`
+- Open [http://localhost:3000](http://localhost:3000) to view the application in browser.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Backend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the `_DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
 
-### `npm run eject`
+## Data
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Data stored in the Redux Store:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Users
+- Questions
+- authedUser
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Screenshots
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Login
 
-## Learn More
+![1](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/login1.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Dashboard
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![2](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/Dashboard.png)
 
-### Code Splitting
+### Leaderboard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![3](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/Leaderboard.png)
 
-### Analyzing the Bundle Size
+### Question Poll
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![4](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/NewPoll.png)
 
-### Making a Progressive Web App
+### Poll Results
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![5](https://github.com/jkinathan/React-nd-WouldYouRather/public/images/Results.png)
