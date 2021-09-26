@@ -12,16 +12,20 @@ const pollTypes = {
   POLL_RESULT: 'POLL_RESULT'
 };
 
-const PollData = props => {
+const PollData = (props) => {
   const { pollType, question, unanswered } = props;
 
   switch (pollType) {
+
     case pollTypes.POLL_TEASER:
       return <PollTeaser question={question} unanswered={unanswered} />;
+
     case pollTypes.POLL_QUESTION:
       return <PollQuestion question={question} />;
+
     case pollTypes.POLL_RESULT:
       return <PollResult question={question} />;
+
     default:
       return;
   }
@@ -48,11 +52,9 @@ export class UserCard extends Component {
               <Image src={author.avatarURL} />
             </Grid.Column>
             <Grid.Column width={11}>
-              <PollData
-                pollType={pollType}
-                question={question}
-                unanswered={unanswered}
-              />
+              
+              <PollData pollType={pollType} question={question} unanswered={unanswered}/>
+
             </Grid.Column>
           </Grid.Row>
         </Grid>

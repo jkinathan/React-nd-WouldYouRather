@@ -1,4 +1,6 @@
-import { RECEIVE_QUESTIONS,  ADD_ANSWER_TO_QUESTION,  ADD_QUESTION } from '../actions/questions';
+import { RECEIVE_QUESTIONS, ADD_QUESTION } from '../actions/questions';
+import { ADD_ANSWER_TO_QUESTION } from '../actions/users';
+
 
 export default function questions(state = {}, action) 
 {
@@ -14,8 +16,10 @@ export default function questions(state = {}, action)
 
       return {
         ...state,
+
         [qid]: {
           ...state[qid],
+
           [answer]: {
             ...state[qid][answer],
             votes: state[qid][answer].votes.concat(authUser)

@@ -31,8 +31,8 @@ class App extends Component {
                     <Grid.Column style={{ maxWidth: 550 }}>
                   <Login />
                   </Grid.Column>
-                </Grid.Row>
-              </Grid>
+                  </Grid.Row>
+                </Grid>
               )}
             />
           ) : (
