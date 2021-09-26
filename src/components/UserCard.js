@@ -30,32 +30,36 @@ const PollData = (props) => {
 class UserCard extends Component {
   
   render() {
-    const { author, question, pollType, unanswered = null, page404 } = this.props;
+    const { author, question, pollType, unanswered = null, page404id } = this.props;
     
-    if(page404 === true){
+    if(page404id === true){
       return <Redirect to="/questions/page404id"/>;
     }
-    return (
-      <Segment.Group>
-        <Header as="h5" textAlign="left" block attached="top" >
-        {unanswered === true ? author.name +" asks :" : "Asked by: "+author.name}
-        
-        </Header>
 
-        <Grid divided padded>
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Image src={author.avatarURL} />
-            </Grid.Column>
-            <Grid.Column width={11}>
-              
-              <PollData pollType={pollType} question={question} unanswered={unanswered}/>
-
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment.Group>
-    );
+    else{
+      return (
+        <Segment.Group>
+          <Header as="h5" textAlign="left" block attached="top" >
+          
+          {author.name} asks:
+          </Header>
+  
+          <Grid divided padded>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <Image src={author.avatarURL} />
+              </Grid.Column>
+              <Grid.Column width={11}>
+                
+                <PollData pollType={pollType} question={question} unanswered={unanswered}/>
+  
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Segment.Group>
+      );
+    }
+    
   }
 }
 
@@ -66,6 +70,7 @@ function mapStateToProps(
 {
   let question, pollType, author, page404id = false;
 
+  
   if (question_id !== undefined) 
   {
     question = questions[question_id];
@@ -79,9 +84,13 @@ function mapStateToProps(
     question = questions[question_id];
 
     const user = users[authUser];
+    
 
     if(question === undefined)
     {
+      console.log("--------------Helloo------------")
+      console.log("My question is ",question)
+      console.log("And my user is: ",user)
       page404id = true;
     }
     else

@@ -18,11 +18,11 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { setAuthUser } = this.props;
-    const authedUser = this.state.value;
+    const authUser = this.state.value;
 
     new Promise((res, rej) => {
       setTimeout(() => res(), 500);
-    }).then(() => setAuthUser(authedUser));
+    }).then(() => setAuthUser(authUser));
   };
 
   LoginDropdown = () => {
@@ -91,4 +91,4 @@ function mapStateToProps({ users }) {
   };
 }
 
-export default connect(mapStateToProps,{ setAuthUser})(Login);
+export default connect(mapStateToProps,{ setAuthUser })(Login);
