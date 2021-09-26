@@ -39,6 +39,7 @@ class UserCard extends Component {
       <Segment.Group>
         <Header as="h5" textAlign="left" block attached="top" >
         {unanswered === true ? author.name +" asks :" : "Asked by: "+author.name}
+        
         </Header>
 
         <Grid divided padded>

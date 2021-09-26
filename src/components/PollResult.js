@@ -24,7 +24,7 @@ class PollResult extends Component {
         <Header as="h3">
           Results:
         </Header>
-        <Segment style={{ backgroundColor: 'lightblue' }}>
+        <Segment style={{ backgroundColor: userVote === 'optionOne' ? 'lightblue' : 'lightgrey'}}>
 
           {userVote === 'optionOne' && <VoteTag />}
 
@@ -34,7 +34,7 @@ class PollResult extends Component {
           </Progress>
         </Segment>
 
-        <Segment style={{ backgroundColor: `lightgrey` }}>
+        <Segment style={{ backgroundColor: userVote === 'optionTwo' ? 'lightblue' : 'lightgrey' }}>
           {userVote === 'optionTwo' && <VoteTag />}
 
           <p style={{ fontWeight: 'bold' }}>{question.optionTwo.text}</p>
