@@ -13,9 +13,11 @@ import Leaderboard from './components/Leaderboard';
 import Page404 from './components/404';
 
 class App extends Component {
+
   componentDidMount() {
     this.props.handleInitialData();
   }
+
   render() {
     const { authUser } = this.props;
     return (
@@ -24,24 +26,32 @@ class App extends Component {
           {authUser === null ? (
             <Route
               render={() => (
-                <ContentGrid>
+                <Grid padded="vertically" columns={1} centered>
+                  <Grid.Row>
+                    <Grid.Column style={{ maxWidth: 550 }}>
                   <Login />
-                </ContentGrid>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
               )}
             />
           ) : (
             <Fragment>
               <Nav />
-              <ContentGrid>
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/questions/page404id" component={Page404} />
-                  <Route path="/questions/:question_id" component={UserCard} />
-                  <Route path="/add" component={NewPoll} />
-                  <Route path="/leaderboard" component={Leaderboard} />
-                  <Route component={Page404} />
-                </Switch>
-              </ContentGrid>
+              <Grid padded="vertically" columns={1} centered>
+                <Grid.Row>
+                  <Grid.Column style={{ maxWidth: 550 }}>
+                  <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/questions/page404id" component={Page404} />
+                    <Route path="/questions/:question_id" component={UserCard} />
+                    <Route path="/add" component={NewPoll} />
+                    <Route path="/leaderboard" component={Leaderboard} />
+                    <Route component={Page404} />
+                  </Switch>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
             </Fragment>
           )}
         </div>
@@ -49,14 +59,6 @@ class App extends Component {
     );
   }
 }
-
-const ContentGrid = ({ children }) => (
-  <Grid padded="vertically" columns={1} centered>
-    <Grid.Row>
-      <Grid.Column style={{ maxWidth: 550 }}>{children}</Grid.Column>
-    </Grid.Row>
-  </Grid>
-);
 
 function mapStateToProps({ authUser }) {
   return {
